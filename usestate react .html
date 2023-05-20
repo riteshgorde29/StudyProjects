@@ -1,0 +1,49 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const App=()=>{
+     console.log('App comp')
+     const [result,setResult]=React.useState(0)
+     const [n1,setN1]=React.useState(0)
+     const [n2,setN2]=React.useState(0)
+     const [clr,setClr]=React.useState('green')
+
+     const fnClick=()=>{
+        let sum=n1+n2
+        if(sum<100){
+            setClr('blue')
+           }  else{
+                setClr("red") 
+            }
+            setResult(sum)      
+     }
+     const fnChangeTb1=(eve)=>{
+        setN1(Number(eve.target.value))
+     }
+     const fnChangeTb2=(eve)=>{
+        setN2(parseInt(eve.target.value))
+     }
+
+    return <div>
+    <p> <b>No1:</b> <input onChange={ fnChangeTb1} type='number'/>
+    </p>
+    <p> <b>No2 </b> <input onChange={fnChangeTb2} type='number'/>
+        </p>
+        <p><button onClick={fnClick}>SUM</button>
+            </p>
+            <h1 style={{ color:clr,fontSize:"100px"}}>{result} </h1>
+ 
+        </div>
+}
+
+    var container=ReactDOM.createRoot(document.getElementById('root'))
+        container.render(<App/>)
+
+    </script>
+</body>

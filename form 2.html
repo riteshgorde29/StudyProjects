@@ -1,0 +1,41 @@
+ <script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+const App=()=>{
+
+    const no1Ref=React.useRef()
+    const no2Ref=React.useRef()
+    const resRef=React.useRef()
+    const division =()=>{
+        let n1=no1Ref.current.value
+        let n2=no2Ref.current.value
+        if(isNaN(n1)){
+            alert('n1 is not a number Enter a valid number')
+          return  }
+            if(isNaN(n2)){
+                alert('n2 is not a number Enter a valid number')
+                return
+            } 
+        
+        let division=parseInt(n1)/parseInt(n2)
+        resRef.current.innerText=division
+    } 
+
+
+return <div> <p><b> no1:</b> <input ref={no1Ref}/>
+       </p>
+       <p><b>no2:</b> <input ref={no2Ref}/>
+        </p>
+        <p><button onClick={division}> division</button></p>
+        <h1>Result: <span  ref={resRef}></span></h1>
+        
+    
+    </div>
+}
+var container=ReactDOM.createRoot(document.getElementById('root'))
+container.render(<App/>)
+</script>

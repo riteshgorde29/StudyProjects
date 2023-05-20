@@ -1,0 +1,79 @@
+
+<style>
+
+
+</style>
+
+<script type="text/babel">
+    //prepare content
+
+    function Hellow(){
+        return <h1> Hellow World</h1>
+    }
+    //container reference
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+
+ //render content inside the container
+ container.render(<Hellow/>)
+    </script>
+
+    //NEXT LINE
+    
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        render() {
+          return <h1>Hello world</h1>
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+  </body>
+</html> 
+// print Hellow world four time 
+
+
+
+
+
+
+
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>S
+<script src="react-dom.development.js"> </script>
+
+
+<style>
+    .div{
+        background: #e05353;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+
+</style>
+<body>
+    <div id="root"></div>
+
+
+
+<script type="text/babel">
+
+
+  function Name(){
+    return <h1> Hellow Ritesh </h1>
+  }
+  function App(){
+    return <div>
+        <Name/><Name/><Name/><Name/>
+        </div>
+  }
+    
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+
+ 
+ container.render(<App/>)
+      </script>
+    </body>

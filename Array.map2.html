@@ -1,0 +1,24 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+ 
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const App =()=>{
+    const player=['amol','prethmesh','sujit','mache' ]
+
+    return <select>
+        {
+    player.map((v,i)=>{
+        return <option key={i}> {v} </option>
+     })
+    
+    }
+        </select>
+}
+var container=ReactDOM.createRoot(document.getElementById('root'))
+    container.render(<App/>)
+    </script>
+</body> 

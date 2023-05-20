@@ -1,0 +1,53 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const App=()=>{
+const no1Ref=React.useRef()
+const resRef=React.useRef()
+const checkPrime=()=>{
+    let n1=no1Ref.current.value 
+  
+    if (n1==1){
+        alert('this is not prime number')
+        return
+    }
+
+   else if (n1==2) {
+    alert('this is prime number')
+    return 
+   }
+   
+ 
+ 
+    let checkPrime=parseInt(n1)
+    resRef.current.innerText=checkPrime
+
+}
+
+
+
+
+    return <div> <p><b>no1:</b><input ref={no1Ref}/>
+        </p>
+                   
+                     <p><button onClick={checkPrime}>checkPrime:</button>
+                     </p>
+                     <p><span ref={resRef}>result:</span></p>
+        </div>
+
+}
+
+
+
+var container=ReactDOM.createRoot(document.getElementById('root'))
+container.render(<App/>)
+
+
+
+    </script>
+
+</body>

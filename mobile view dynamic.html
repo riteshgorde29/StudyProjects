@@ -1,0 +1,178 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"> </script>
+
+
+<style>
+    body{
+        margin: 0;
+
+    }
+#header{
+    background: yellow;
+    text-align: center;
+    font-size: 50px;
+    font-family: fangsong;
+    padding: 10px;
+    cursor: pointer;
+}
+.menu{
+    text-align: right;
+    font-size: 17px;
+    position: sticky;
+    line-height: 39px;
+    padding-left: 20px;
+    letter-spacing: 4px;
+    background: black;
+    color: whitesmoke;
+    top: 0px;
+    cursor: pointer;
+}
+.mobile-menu{
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    background: black;
+    text-align: left;
+    line-height: 39px;
+    color: bisque;
+    transition: 1s;
+    position: absolute;
+    top: 72px;
+}
+.mobile-menu >a{
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    display: block;
+}
+.menu >a{ 
+    margin-right:15px;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 6px;
+     
+}
+#footer{
+    background: yellow;
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    width: 100%; 
+    cursor: pointer;
+}
+.mobile-menu-btn{
+    position: absolute;
+    right: 0;
+    top: 75px;
+}
+.menu-active{
+    color: cornflowerblue!important;
+}
+@media screen and (max-width: 600px){
+    #header{
+        font-size: 45px !important;
+    }
+    
+}
+</style>
+<body>
+    <div id="root"></div>
+
+<script type="text/babel">
+    //prepare content
+
+
+ const Home=()=>{
+    return <h4>Home page </h4>
+ }
+ const About=()=>{
+    return <h4> About page </h4>
+ }
+ const Contact=()=>{
+    return <h4>Contact page </h4>
+ }
+ const Service=()=>{
+    return <h4> Service page </h4>
+ }
+ const Help=()=>{
+    return <h4> Help page</h4>
+ }
+const Menu=()=>{ 
+    const [myLeft,setMyLeft]=React.useState(-170)
+    const  [menuItem,setMenuItem]=React.useState("home")
+    const[isMobileView,setIsMobileView]=React.useState(document.body.offsetWidth<600 ? true:false)
+let flag=true
+let timeOutId;
+window.addEventListener('resize',(eve)=>{
+    if(flag){
+        fnHandleResize()
+        flag=false
+    }
+    clearTimeout(timeOutId)
+    timeOutId=setTimeout(()=>{
+        fnHandleResize()
+    },2000)
+    })
+    const fnHandleResize=()=>{
+        const _width=document.body.offsetWidth 
+        setIsMobileView(_width > 600 ? false :true )
+    }
+        const fnClick=(eve)=>{
+            eve.stopPropagation()
+            const {id,nodeName} =eve.target
+            if(nodeName=='DIV')return;
+            setMenuItem (id)
+            if(isMobileView){
+                setMyLeft(-170)
+            }
+        }
+        const fnMobileMenuBtnClick=()=>{
+            setMyLeft (myLeft == 0 ? -170 : 0 )
+        }
+    
+    return <div>
+        { isMobileView && <button onClick={fnMobileMenuBtnClick} className="mobile-menu-btn ">mobile menu</button> }
+     <div onClick={fnClick}style={{left:myLeft} } className={isMobileView ? 'mobile-menu':'menu'}>
+
+     <a  id='home 'className={menuItem =='home'&& 'menu-active'}> Home</a>
+     <a id='about'className={menuItem=='about'&&'menu-active'}>About </a>
+     <a id='contact' className={menuItem=='contact'&& 'menu-active'}> Contact</a>
+     <a id='service'className={menuItem=='service'&& 'menu-active'}>Service</a>
+     <a id='help' className={menuItem=='help'&& 'menu-active'}>help</a>
+   </div>
+   {menuItem == "home"&& <Home/>}
+   { menuItem == "about" && < About/>}
+   { menuItem =="contact" && <Contact/>}
+   {menuItem =="service" && <Service/>}
+   {menuItem=="help"&& <Help/>}
+</div>
+}
+const Header=()=>{
+    return <div id="header"> my first static web page </div>
+}
+const Footer=()=>{
+    return  <div id="footer">&copy;belong to me</div>
+}
+    const App=()=>{ 
+        return <div> 
+                  <Header/>
+                  < Menu/>            
+                 <Footer/>
+            </div>
+    }
+    
+    //container reference
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+
+ //render content inside the container
+ container.render(<App/>)
+    </script>
+    </body>
+
+

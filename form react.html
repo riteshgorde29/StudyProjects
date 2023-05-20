@@ -1,0 +1,64 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<body>
+    <style>
+
+    </style>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+/*lass Form extends React.Component{
+    render(){
+        return <div className='one'> registration form
+            </div>
+    }
+}
+class App extends React.Component{
+    render(){
+        return 
+    }
+}*/
+
+const App=()=>{
+    const no1Ref=React.useRef()
+    const no2Ref=React.useRef()
+    const resRef=React.useRef()
+    const sum=()=>{
+    let  n1=no1Ref.current.value
+    let  n2=no2Ref.current.value
+if(isNaN(n1)){
+    alert('please Enter valid n1 value')
+    return
+}
+if(isNaN(n2)){
+    alert('aleter Enter valid n2 value')
+    return
+}
+
+    let sum=parseInt(n1)+parseInt(n2) 
+    resRef.current.innerText=sum
+    }
+    return <div> 
+        <p><b> No1:</b> <input ref={no1Ref} />
+             </p>
+             <p> 
+                <b> No2:</b> <input ref={no2Ref}/>
+                </p>
+                  <p>
+                    <button onClick={sum}>Sum</button>
+                    </p>
+                    <h4>Result:<spam ref={resRef}></spam></h4>
+        </div>
+}
+
+
+
+
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+ container.render(<App/>)
+    </script>
+</body>

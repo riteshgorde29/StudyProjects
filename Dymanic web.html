@@ -1,0 +1,116 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"> </script>
+
+
+<style>
+    body{
+        margin: 0;
+
+    }
+#header{
+    background: yellow;
+    text-align: center;
+    font-size: 30px;
+    font-family: fangsong;
+    padding: 10;
+}
+.menu{
+    text-align: end;
+    font-size: 17px;
+    position: sticky;
+    line-height: 39px;
+    padding-left: 20px;
+    letter-spacing: 4px;
+    background: black;
+    color: whitesmoke;
+    top: 0px;
+    cursor: pointer;
+}
+.menu >a{ 
+     margin-right: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 6px;
+
+}
+#footer{
+    background: yellow;
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    width: 100%; 
+    cursor: pointer;
+}
+</style>
+<body>
+    <div id="root"></div>
+
+<script type="text/babel">
+    //prepare content
+
+
+ const Home=()=>{
+    return <h4>Home page </h4>
+ }
+ const About=()=>{
+    return <h4> About page </h4>
+ }
+ const Contact=()=>{
+    return <h4>Contact page </h4>
+ }
+ const Service=()=>{
+    return <h4> Service page </h4>
+ }
+ const Help=()=>{
+    return <h4> Help page</h4>
+ }
+const Menu=()=>{ 
+    const  [menuItem,setMenuItem]=React.useState("home")
+        const fnClick=(item)=>{
+            setMenuItem(item)
+        }
+    
+    return <div>
+     <div className="menu">
+
+     <a onClick={()=>fnClick("home")}> Home</a>
+     <a onClick={()=>fnClick("about")}>About</a>
+     <a onClick={()=>fnClick("contact")}> Contact</a>
+     <a onClick={()=>fnClick("service")}>Service</a>
+     <a onClick={()=>fnClick("help")}>help</a>
+   </div>
+   {menuItem == "home"&& <Home/>}
+   { menuItem == "about" && < About/>}
+   { menuItem =="contact" && <Contact/>}
+   {menuItem =="service" && <Service/>}
+   {menuItem=="help"&& <Help/>}
+</div>
+}
+const Header=()=>{
+    return <div id="header"> my first static web page </div>
+}
+const Footer=()=>{
+    return  <div id="footer">&copy;belong to me</div>
+}
+    const App=()=>{ 
+        return <div> 
+                  <Header/>
+                  < Menu/>            
+                 <Footer/>
+            </div>
+    }
+    
+    //container reference
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+
+ //render content inside the container
+ container.render(<App/>)
+    </script>
+    </body>
+
+
+    

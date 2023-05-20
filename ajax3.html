@@ -1,0 +1,54 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="axios.min.js"></script>
+ <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const Table=(props)=>{
+            const {headers,data,columms}=props
+            return <table border='1px'>
+                <thead>
+                    <tr>
+                        {
+                            headers.map((v,i)=>{
+                                return <th key={i}>{v}</th>
+                            })
+                        }
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {
+                          data.map((obj,ind)=>{
+                                return <tr key={ind}>
+                                    {
+                                        columms.map((col,i)=>{
+                                        return <td key={i}>{obj[col]}</td>
+                                    })
+                                }
+                                    </tr>
+                            })
+                        }
+                        </tbody>
+                </table>
+        }  
+        const App=()=>{ 
+            const fnGetComments=()=>{
+                axios.get('https://jsonplaceholder.typicode.com/comments')
+                .then((res)=>{
+                    console.log(res.data)
+                })
+                .catch((res)=>{
+                    console.log(res)
+                })
+            }
+            return <div> 
+                            <p> <button onClick={fnGetComments}>Get Comments</button></p>           
+                </div>
+        }
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+ container.render(<App/>)
+    </script>
+ </body>

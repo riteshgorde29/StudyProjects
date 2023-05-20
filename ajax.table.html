@@ -1,0 +1,67 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+         const Table=(props)=>{
+            const {headers,data,columns}=props
+            return <table border='1px'>
+                <thead> 
+                    <tr>{
+                        headers.map((v,i)=>{
+                        return <th key={i}>{v}</th>
+                    })
+                }
+                 </tr>
+                 </thead>
+                 <tbody>
+                    { data.map((obj,ind)=>{
+                        return <tr key={ind}>
+                             {
+                            columns.map((columns,i)=>{
+                                return <td key={i}>{obj[columns]}</td>
+                            })
+                        }
+                        </tr>
+                    })
+
+                    }
+                    </tbody>
+                </table>
+         }
+
+         const App=()=>{
+            const  [data,setData]=React.useState([])
+            const fnGetUsers=()=>{
+                var obj=new XMLHttpRequest()
+                //preper the req
+                obj.open('get','https://jsonplaceholder.typicode.com/users')
+                //send the req to server
+                obj.send()
+                //
+                obj.onload=function(){
+                    let res=obj.responseText
+                    res=JSON.parse(res)
+                    setData(res) 
+                }
+                obj.onerror=function(){
+                   let res=responseText
+                   setData([])
+                }
+            }
+            return <div> 
+                 <p> <button onClick={fnGetUsers}>Get Users</button>
+                </p> 
+                {
+                    data.length >0 ?<Table headers={['UserName','Email','Phone','web site']} data={data} columns={['UserName','Email','Phone','webSite']}/>
+               : <h3> No data</h3> }
+                </div>
+         }
+         const container=ReactDOM.createRoot(document.getElementById('root'))
+             container.render(<App/>)  
+    
+    </script>
+</body>

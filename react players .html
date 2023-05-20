@@ -1,0 +1,61 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<body>
+
+<style>
+.table{
+    background-color: rgb(13, 217, 217);
+    color: black;
+    text-align: right;
+}
+</style>
+
+    <div id="root"></div>
+    <script type="text/babel">
+
+class player extends React.Component{
+    render(){ 
+        return <h1 className='table'>table list
+            </h1>
+    }
+}
+class App extends React.Component{
+    render(){
+        return <table border='2px'>
+            <thead> 
+                <tr>
+                    <th>name</th>
+                    <th>roll no</th>
+                    <th> address  </th>
+                    <th> email id </th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ritesh</td>
+                        <td>12</td>
+                        <td>astagoan</td>
+                        <td>xyx</td>
+                        </tr>
+                        <tr>
+                            <td>amit</td>
+                            <td>11</td>
+                            <td>pune</td>
+                            <td>zxs</td>
+                            </tr>
+                            <tr>
+                                <td>rahul</td>
+                                <td>13</td>
+                                <td>shirdi</td>
+                                <td>gdh</td>
+                                
+                                </tr>
+                     </tbody>
+            </table>
+        }
+}
+  const  container =ReactDOM.createRoot(document.getElementById('root'))
+container.render(<App/>)
+    </script>
+</body>

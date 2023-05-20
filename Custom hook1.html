@@ -1,0 +1,36 @@
+ <script src="babel.min.js"></script>
+ <script src="react.development.js"></script>
+ <script src="react-dom.development.js"></script>
+  <body>
+    <div id="root"></div>
+     <script type="text/babel">
+
+        const ButtonClick=()=>{
+            const [cnt,setCnt]=React.useState(0)
+              const fnClick=()=>{
+                setCnt(cnt+1)
+              }
+
+            return <div>
+                <button onClick={fnClick}> He clicked me {cnt} time(s)</button>
+                </div>
+        }
+        const TextHover=()=>{
+            const [cnt,setCnt]=React.useState(0)
+           const fnIncrement=()=>{
+            setCnt(cnt+1)
+           }
+         return <h1 onMouseOver={fnIncrement}> He Hover me {cnt} time(s)</h1>
+        }
+        const App=()=>{
+            
+            return <div>
+                <ButtonClick/>
+                < TextHover/>
+                </div>
+        }
+        
+  const container=ReactDOM.createRoot(document.getElementById('root'))
+  container.render(<App/>)
+     </script>
+  </body>

@@ -1,0 +1,36 @@
+<script src="babel.min.js"></script>        
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<body>
+    <div id="root"></div>
+    <style>
+
+    </style>
+    <script type="text/babel">
+        const A=( props)=>{ 
+            return <div>
+            <h1> child :-{props.n}</h1>
+            </div>
+        } 
+        const App=()=>{
+            const nameRef=React.useRef()
+            const [data,setData]= React.useState( 'not yet recived data from parant')
+
+            const fnClick=()=>{
+        const name=nameRef.current.value;
+        setData( name)
+            }
+            return <div>
+                <h1>parant</h1>
+                <div>
+             <p> name: <input ref={nameRef}/></p>
+             <p><button onClick={fnClick}>result :</button> </p>
+             </div>
+             <A n={data}/>
+                </div>
+        }
+  const container=ReactDOM.createRoot(document.getElementById('root'))
+ container.render(<App/>)
+    </script>
+</body>

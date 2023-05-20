@@ -1,0 +1,53 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"> </script>
+
+
+<style>
+
+
+</style>
+<body>
+    <div id="root"></div>
+
+
+
+<script type="text/babel">
+    //prepare content
+const Child=({fn})=>{
+    React.useEffect(()=>{
+        console.log('child component mounted')
+        console.log (fn())
+    },[fn])
+}
+  const App=()=>{
+    const [cnt,setCnt]=React.useState(0)
+    const [name,setName]=React.useState('sachin')
+
+    const fnCheckEvenOrOdd=React.useCallback(()=>{
+        console.log('5k lines')
+        return cnt % 2==0 ? 'even':'odd'
+    },[cnt])
+
+  const fnClick=()=>{
+    setCnt(cnt+1)
+  }
+  const fnToggle=()=>{
+    setName(name=='sachin'? 'dhoni':'sachin')
+  }
+
+    return <div>
+        <h1>{cnt} </h1>
+        <button onClick={fnClick}> increment</button>
+        <Child fn={fnCheckEvenOrOdd} />
+        <h1> {name}</h1>
+        <button onClick={fnToggle}> toggle</button>
+        </div>
+  }
+    //container reference
+ var container=ReactDOM.createRoot(document.getElementById('root'))
+
+ //render content inside the container
+ container.render(<App/>)
+    </script>
+    </body>

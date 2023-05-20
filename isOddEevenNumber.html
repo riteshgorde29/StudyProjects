@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const App =()=>{
+const no1Ref=React.useRef()
+const no2Ref=React.useRef()
+const resRef=React.useRef()
+
+const sum=()=>{
+    let n1=no1Ref.current.value
+    let n2=no2Ref.current.value
+    if(isNaN(n1)){
+        alert("pleas Enter valid number n1")
+        return
+       }
+       if (isNaN(n2)){
+        alert("Enter valid number n2")
+        return
+       }
+
+    let sum= parseInt(n1)+parseInt(n2)
+    resRef.current.innerText=sum
+    }
+    return  <div> <p> <b>no1:</b> <input ref={no1Ref}/>
+            </p>
+            <p><b> no2:</b> <input ref={no2Ref}/>
+            </p>
+            <p> <button onClick={sum}>sum</button></p>
+            <p><span ref={resRef}>Result:</span></p>
+            </div>
+ }
+
+var container=ReactDOM.createRoot(document.getElementById('root'))
+    container.render(<App/>)
+    </script>
+</body>

@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"> </script>
+
+    <div id="root"></div>
+    <style> .box{
+        text-align: center;
+     
+     color: rgb(25, 47, 47);
+     border: 4px;
+     font-style: italic;
+    border: solid;
+    border-color: red;
+    line-height: 4ovh;
+   padding: 20px;
+    margin: 10px;
+    background-color: rgb(138, 135, 129);
+    letter-spacing: 1px;
+    }
+
+    </style>
+
+    <script type="text/babel">
+        const Student=(obj)=>{
+
+            return <h4 className='box'>  hellow i am { obj.name} i am from {obj.loc} my age is {obj.age} my id is {obj.id} my contact {obj.children}
+                </h4>
+            }
+        const App= ()=>{
+            return <div>
+                < Student name= 'ritesh' loc='shirdi'age='28'id='01'>8007835432</Student>
+                < Student name='rahul' loc='pune' age='30' id='02'>12345678</Student>
+                < Student name='amit' loc='latur' age='19' id='03'>098765432</Student>
+                < Student name='pankaj' loc='rahuri' age='36' id='04'>654321789</Student>
+                <Student name="kavya" loc="pune" age="10" id="33">966657765676</Student>
+                </div>
+        }
+        var container=ReactDOM.createRoot(document.getElementById('root'))
+ container.render(<App/>)
+    </script>

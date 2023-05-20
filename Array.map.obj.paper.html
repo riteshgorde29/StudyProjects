@@ -1,0 +1,50 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+ <body> 
+    <div id="root"></div>
+    <script type="text/babel">
+    
+    const List=({data,title})=>{
+return <div>
+    <h1>{title}</h1>
+    <ol>{
+         data.map((v,i)=>{
+        return <li key={i}>{v}</li>
+    })
+    }
+    </ol>
+    </div>
+    }
+   const App=()=>{
+    const  myData=[
+     
+        {
+            data:['useState','useEffect','useMemo','useRef'],
+            title:'1. Below which hook we use to get the ref ?'
+        },
+        {
+            data:[ 'spam','div',' b','p'],
+            title:'2. Below which are inline elements ? '
+        },
+        {
+            data:['onLoad','onClick','onChange','onKeyup'],
+            title:'3. list of event'
+
+        }
+    ]
+    return <div>
+        { myData.map((obj,i)=>{
+            const{data,title}=obj;
+            return <List key={i}  data={data} title={title}/>
+        })
+        }
+        </div>
+   }  
+    
+ var container=ReactDOM.createRoot(document.getElementById('root') )
+     container.render(<App/>)
+    </script>
+
+
+ </body>

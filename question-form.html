@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="bootstrap.css">
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content
+const Select=(props)=>{
+    const {text,errorMsg,options}=props
+    return <div className='row mb-4'>
+               <div className='col-sm-5 text-end'>
+                  <b>{text}:</b>
+               </div>
+               <div className='col-sm-3'>
+                  <select className='form-control'>
+                    {
+                        options.map((opt,ind)=>{
+                            return <option key={ind}>{opt}</option>
+                        })
+                    }
+                  </select>
+               </div> 
+               <div className='col-sm-4'>
+                  <b className='text-danger'>{errorMsg}</b>
+               </div>
+           </div>
+  }
+  const Textarea=(props)=>{
+    const {text,errorMsg}=props
+    return <div className='row mb-4'>
+               <div className='col-sm-5 text-end'>
+                  <b>{text}:</b>
+               </div>
+               <div className='col-sm-3'>
+                  <textarea className='form-control'></textarea>
+               </div> 
+               <div className='col-sm-4'>
+                  <b className='text-danger'>{errorMsg}</b>
+               </div>
+           </div>
+  }
+  const Input=(props)=>{
+    const {text,type,errorMsg,options,name}=props
+    const prepareInput=()=>{
+        switch(type){
+            case 'text':
+                 return <input className='form-control' type={type} />
+            case 'radio':
+                 return  options.map((val,ind)=>{
+                      return <><input name={name} type={type} /> {val}</>
+                  })
+        }
+        
+    }
+    return <div className='row mb-4'>
+               <div className='col-sm-5 text-end'>
+                  <b>{text}:</b>
+               </div>
+               <div className='col-sm-3'>
+                    {prepareInput()}
+               </div> 
+               <div className='col-sm-4'>
+                  <b className='text-danger'>{errorMsg}</b>
+               </div>
+           </div>
+  }
+  const  App= ()=>{
+     const inputControls=[
+        {
+            lbl:'Question',
+            error:'Please Enter Question',
+            tag:'textarea'
+        },
+        {
+            lbl:'Option 1',
+            type:'text',
+            error:'Please Enter Option1',
+            tag:'input'
+        },
+        {
+            lbl:'Option 2',
+            type:'text',
+            error:'Please Enter Option2',
+            tag:'input'
+        },
+        {
+            lbl:'Option 3',
+            type:'text',
+            error:'Please Enter Option3',
+            tag:'input'
+        },
+        {
+            lbl:'Option 4',
+            type:'text',
+            error:'Please Enter Option4',
+            tag:'input'
+        },
+        {
+            lbl:'Type',
+            type:'radio',
+            error:'Please Select Question Type',
+            options:['Single','Multi'],
+            tag:'input',
+            name:'type'
+        },
+        {
+            lbl:'Answer',
+            error:'Please Select Answer',
+            options:['A','B','C','D','AB','AC','AD','BC','BD','CD','ABC','ACD','BCD','ABCD'],
+            tag:'select'
+        }
+     ]
+     return <div>
+           <h2 className="text-center bg-primary pt-3 pb-3 text-white mb-5">Question</h2>
+           <div className='container-fluid'>
+            {
+                inputControls.map(({lbl,type,error,tag,options,name},ind)=>{
+                    switch(tag){
+                        case 'textarea':
+                             return <Textarea text={lbl}  errorMsg={error} />
+                        case 'input':
+                             return <Input name={name} text={lbl} type={type} errorMsg={error} options={options} />
+                        case 'select':
+                             return <Select text={lbl} options={options} errorMsg={error} />
+
+                    }
+                }) 
+            }
+           <div className='row mb-4'>
+               <div className="offset-sm-5 col-sm-7">
+                  <button className='btn btn-primary'>Save</button>
+               </div>
+           </div>
+           </div>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+<b className='text-danger'>{errorMsg}</b>
+<b className='text-danger'>{errorMsg}</b>
+<b className='text-danger'>{errorMsg}</b>

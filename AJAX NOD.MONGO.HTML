@@ -1,0 +1,30 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+const App=()=>{
+    const fnGetUsers=()=>{
+        var obj=new XMLHttpRequest()
+        //Prepare the req
+        obj.open('get',' https://jsonplaceholder.typicode.com/users')
+        //send the request
+        obj.send()
+        //
+        obj.onload=function(){
+            alert('onload')
+        }
+        obj.onerror=function(){
+            alert('onerror')
+        }
+    }
+    return <div>
+         <p> <button onClick={fnGetUsers}> GetUsers</button>
+        </p>
+        </div>
+}
+   const container=ReactDOM.createRoot(document.getElementById('root'))
+  container.render(<App/>)
+ </script>
+</body>

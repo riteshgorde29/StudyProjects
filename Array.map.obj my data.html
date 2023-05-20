@@ -1,0 +1,53 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+ <body> 
+    <div id="root"></div>
+    <script type="text/babel">
+    
+    const List=({data,title})=>{
+return <div>
+    <h1>{title}</h1>
+    <ol>{
+         data.map((v,i)=>{
+        return <li key={i}>{v}</li>
+    })
+    }
+    </ol>
+    </div>
+    }
+   const App=()=>{
+    const  myData=[
+        {
+        data:['sachin','rahul','ritesh','abhi','vicky'],
+        title:'player'   
+        },
+        {
+            data:[40,36,34,54,23],
+            title:'age'
+        },
+        {
+            data:[ 's1','s2','s3','s4','s5'],
+            title:'id'
+        },
+        {
+            data:['pune','mumbai','nashik','kolhapur','sangli'],
+            title:'location'
+
+         }
+    ]
+    return <div>
+        { myData.map((obj,i)=>{
+            const{data,title}=obj;
+            return <List key={i}  data={data} title={title}/>
+        })
+        }
+        </div>
+   }  
+    
+ var container=ReactDOM.createRoot(document.getElementById('root') )
+     container.render(<App/>)
+    </script>
+
+
+ </body> 

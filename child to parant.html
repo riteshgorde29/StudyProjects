@@ -1,0 +1,42 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+ <body>
+ <div id="root"> </div>
+    <style>
+
+    </style>
+    <script type="text/babel">
+
+ const A=(props)=>{
+    const nameRef=React.useRef()
+  
+   const fnClick=()=>{
+const name=nameRef.current.value;
+props.fn(name)
+   }
+    return <div>
+         <h1>child  {props.n}</h1>
+        <div>
+        <p> name: <input ref={nameRef}/>
+            </p>
+            <button onClick={fnClick}>result:</button>
+        </div>
+
+    </div>
+ }
+ const App=()=>{
+ 
+    const [data,setData]=React.useState(' hellow')
+    const f2=(name)=>{
+        setData(name)        
+    }
+    return <div>
+        <h1> parant: {data}</h1>
+        <A fn={f2} />
+        </div> 
+ }
+   const container=ReactDOM.createRoot(document.getElementById('root'))
+     container.render(<App/>)
+    </script>
+ </body> 

@@ -1,0 +1,44 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<style>
+   .Fox{color: blue;
+    border: 4px;
+    background-color: aqua;
+    margin: 20px;
+    padding: 10px;
+    width: 100px;
+    border-radius: 14px;
+    text-align: center;
+
+
+   }
+</style>
+
+<div id="root"></div>
+<script type="text/babel">
+
+ class Name extends React.Component {
+  render() {
+    return 
+      <div className="Fox"> hellow world</div>
+    
+  }
+}
+  class App extends React.Component{
+  render(){
+ 
+    return<div> 
+      <div>
+        <Name no='1'/><Name no='2'/>
+        </div>
+        <div>
+        <Name no='3'/><Name no='4'/>
+        </div>
+        </div>
+      }
+    } 
+
+var container=ReactDOM.createRoot(document.getElementById('root'))
+    container.render(<App/>)
+</script>

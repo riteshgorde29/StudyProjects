@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<body>
+    <style>
+.Fox{color: black;
+    background-color: blueviolet;
+    font-style: italic;
+    font-size: bold;
+
+}
+    </style>
+    <div id="root"></div>
+<script type="text/babel">
+
+class Name extends React.Component{
+    render(){
+        return<h1 className="Fox">hellow</h1>
+    }
+}
+class App extends React.Component{
+    render(){
+        return <div>
+        <div>
+            <Name no='1'/><Name no='2'/>
+        </div>
+        <div>
+        <Name no='3'/><Name no='4'/>
+            </div>
+            </div>
+    }
+}
+
+var container=ReactDOM.createRoot(document.getElementById('root'))
+
+container.render(<App/>)
+
+</script>
+</body>

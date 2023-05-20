@@ -1,0 +1,37 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const App =()=>{
+   const no1Ref=React.useRef()
+    const resRef=React.useRef()
+
+    const isOddEven=()=>{
+        let n1=no1Ref.current.value
+   if(n1%2==0){
+    alert('the number is even')
+}
+   else{
+   alert ("the number is odd")
+   }
+  
+    
+ return }
+        let  isOddeven =parseInt(n1)
+        resRef.current.innerText=isOddEven
+    }
+
+ return <div> <p><b> no1:</b> <input ref={no1Ref}/>
+         </p>
+         <p><button onClick={isOddEven}>isOddeven</button>
+            </p>
+           <h3>Result: <samp ref={resRef}></samp></h3>
+        </div>
+
+var container=ReactDOM.createRoot(document.getElementById("root"))
+ container.render(<App/>)
+    </script>
+</body>

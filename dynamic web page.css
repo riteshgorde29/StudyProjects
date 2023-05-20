@@ -1,0 +1,46 @@
+*{margin: 0px;
+    padding: 0px;
+
+}
+
+#header{
+    background: yellow;
+    text-align: center;
+    font-size: 30px;
+    font-family: fangsong;
+    padding: 10;
+}
+.menu{
+    text-align: end;
+    font-size: 17px;
+    position: sticky;
+    line-height: 39px;
+    padding-left: 20px;
+    letter-spacing: 4px;
+    background: black;
+    color: whitesmoke;
+    top: 0px;
+}
+.menu >a{ 
+     margin-right: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 6px;
+
+}
+.menu+div{
+    text-align: center;
+    font-size: 48px;
+    margin: 100px;
+    height: 400px;
+}
+div:last-child{    background: yellow;
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    width: 100%;
+
+}

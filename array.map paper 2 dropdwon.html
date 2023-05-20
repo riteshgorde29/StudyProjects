@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<bod>
+    <div id="root"></div>
+    <script type="text/babel">
+ const App=()=>{
+ const myData=[{
+    'option':[1,2,4,5,],
+    'title': 'kjhkasdg',
+    'type':'s'
+},
+{'option':[2,5,6,7],
+ 'title':  'kgfjh',
+ 'type':'m'
+
+},
+{'option':[3,7,8,9],
+'title': 'sjgfj',
+'type':'s',
+
+} ]
+    return <div>
+        {  myData.map((obj,ind)=>{
+            const {option,title,type}=obj;
+            return <div key={ind}>
+                <h1>{ind+1} .{title} </h1>
+                {option.map((v,i)=>{
+                    return <p key={i} ><input name={ind} type={type =='s' ?'radio':'checkbox'}/>{v}</p>
+                })}
+                </div>
+        })
+    }
+        </div>
+ }
+var container=ReactDOM.createRoot(document.getElementById('root'))
+ container.render(<App/>)
+</script>    
+</body>

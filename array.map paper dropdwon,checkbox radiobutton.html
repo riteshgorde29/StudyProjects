@@ -1,0 +1,43 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+ <body>
+    
+ 
+<div id="root"></div>
+<script type="text/babel">
+    const App=()=>{
+        const myData=[{
+            'que':' Below which hook we use to get the ref ?',
+            'options':['useState','useEffect','useRef','useMemo']  ,
+            'type':'s',
+             },
+             {'que':' below which are block level elements ?',
+             'options':['div','span','p','d'],
+             'type':'m'
+             },
+             {'que':'how many ways we can pass the data to the component while loading ?',
+             'options':['attribut','document','selector','childern'],
+             'type':'s'
+            }
+
+        ]
+        return <div>
+            {  myData.map((obj,ind)=>{
+                const {que,options,type}=obj
+                return <div key={ind}> 
+                    <h2> {ind+1} .{que}</h2>
+                    {options.map((v,i)=>{
+                        return <p key={i} ><input name={ind}type={type =='s' ?'radio':'checkbox'}/>{v}</p>
+                    })}
+                    </div>
+
+            })
+            }
+            <button>submit   </button>
+            </div>
+    }
+    const container=ReactDOM.createRoot(document.getElementById('root'))
+    container.render(<App/>)
+</script>
+</body>
